@@ -3,9 +3,18 @@ import bodyParser from "body-parser";
 import router from "./routes/posts.routes.js";
 import cors from "cors"
 import dotenv from "dotenv"
+import path from "path"
 dotenv.config()
 const port = process.env.port || 4000
 const app = express()
+const __dirname = path.resolve()
+app.use(express.static(path.join(__dirname, "../frontend/build")))
+// THIS LINE OF CODE SURF IN THE BUILD FOLDER ALL THE STATIC FILES (LIKE IMG)
+app.get("*",(req,res)=>{
+    res.sendFile(path.join(__dirname,"../frontend/build/index.html"))
+})
+
+console.log(path.join(__dirname, "../frontend/build"))
 app.use(bodyParser.json());
 app.use(cors());
 app.use(router)
