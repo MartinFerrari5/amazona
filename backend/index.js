@@ -5,14 +5,14 @@ import cors from "cors"
 import dotenv from "dotenv"
 import path from "path"
 dotenv.config()
-const port = process.env.port || 4000
+const port = process.env.PORT || 4000
 const app = express()
 const __dirname = path.resolve()
-app.use(express.static(path.join(__dirname, "../frontend-real/build")))
-// THIS LINE OF CODE SURF IN THE BUILD FOLDER ALL THE STATIC FILES (LIKE IMG)
-app.get("*",(req,res)=>{
-    // res.sendFile(path.join(__dirname,"../frontend-real/build/index.html"))
-})
+// app.use(express.static(path.join(__dirname, "../frontend-real/build")))
+// // THIS LINE OF CODE SURF IN THE BUILD FOLDER ALL THE STATIC FILES (LIKE IMG)
+// app.get("*",(req,res)=>{
+//     res.sendFile(path.join(__dirname,"../frontend-real/build/index.html"))
+// })
 
 
 app.use(bodyParser.json());
@@ -27,5 +27,5 @@ app.get("/api/keys/paypal", (req,res)=>{
     res.send(process.env.PAYPAL_CLIENT_ID || "sb")
 })
 app.listen(port, ()=>{
-    console.log("Listening to port ", port)
+    console.log(`serve at http://localhost:${port}`);
 })
