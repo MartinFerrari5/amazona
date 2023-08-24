@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.cartGrid{
+    grid-template-columns: repeat(1, 1fr);
+}
+
+.yellowButton{
+    background-color: #ffdc18;
+}
+#active{
+    color: rgb(241, 169, 14);
+}
+#active span{
+    border-color: rgb(241, 169, 14);
+}
+
+@media screen and (min-width:700px) {
+    .cartGrid{
+        grid-template-columns: 70% 30%
+    }
+}
