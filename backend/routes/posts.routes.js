@@ -7,9 +7,12 @@ import bcrypt from "bcrypt"
 import { generateToken, isAuth } from "../utils.js";
 const router = Router();
 connection()
+
 router.get("/", async (req, res)=>{
     try{
         const createdProducts = await productModel.insertMany(data)
+        res.send(data)
+        
     }catch(error){
         return res.status(500).json({ message: error.message });
     }
