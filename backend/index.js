@@ -8,13 +8,13 @@ dotenv.config()
 const port = process.env.port || 4000
 const app = express()
 const __dirname = path.resolve()
-// app.use(express.static(path.join(__dirname, "../frontend-real/build")))
+app.use(express.static(path.join(__dirname, "../frontend-real/build")))
 // THIS LINE OF CODE SURF IN THE BUILD FOLDER ALL THE STATIC FILES (LIKE IMG)
-// app.get("*",(req,res)=>{
-//     // res.sendFile(path.join(__dirname,"../frontend-real/build/index.html"))
-// })
+app.get("*",(req,res)=>{
+    // res.sendFile(path.join(__dirname,"../frontend-real/build/index.html"))
+})
 
-// console.log(path.join(__dirname, "../frontend-real/build"))
+
 app.use(bodyParser.json());
 app.use(cors());
 app.use(router)
